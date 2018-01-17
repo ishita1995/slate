@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;java&quot;,&quot;php&quot;,&quot;csharp&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -212,6 +212,11 @@
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="ruby">ruby</a>
+              <a href="#" data-language-name="python">python</a>
+              <a href="#" data-language-name="java">java</a>
+              <a href="#" data-language-name="php">php</a>
+              <a href="#" data-language-name="csharp">csharp</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -220,6 +225,9 @@
       <div id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
             <a href="#sentiment" class="toc-h1 toc-link" data-title="/SENTIMENT">/SENTIMENT</a>
@@ -322,7 +330,7 @@
           </li>
       </div>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
+            <li><a href='https://www.paralleldots.com/sign-up'>Sign Up for a Developer Key</a></li>
             <li><a href='https://github.com/lavkumarv'>Documentation Powered by lav</a></li>
         </ul>
     </div>
@@ -333,11 +341,79 @@
 <p>AI Powered Text Analysis Apis  </p>
 
 <p><strong>Version:</strong> 2.0.0 </p>
+<h1 id='authentication'>Authentication</h1>
+<blockquote>
+<p>To authorize, use this code:</p>
+</blockquote>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'paralleldots'</span>
+
+<span class="n">set_api_key</span><span class="p">(</span><span class="s2">"ABCdef123MNO456PQR789xyz"</span><span class="p">)</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">paralleldots</span> <span class="kn">import</span> <span class="n">set_api_key</span>
+
+<span class="n">set_api_key</span><span class="p">(</span><span class="s">"ABCdef123MNO456PQR789xyz"</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl <span class="s2">"api_endpoint_here"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">from</span> <span class="n">paralleldots</span> <span class="kn">import</span> <span class="nn">set_api_key</span><span class="o">,</span> <span class="n">get_api_key</span>
+
+<span class="nf">set_api_key</span><span class="o">(</span><span class="s">"ABCdef123MNO456PQR789xyz"</span><span class="o">)</span>
+</code></pre><pre class="highlight php tab-php"><code>require(__DIR__ . '/vendor/paralleldots/apis/autoload.php');
+# Setting your API key
+set_api_key("ABCdef123MNO456PQR789xyz"); 
+
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="err">#</span> <span class="n">Import</span> <span class="n">wrapper</span> <span class="k">namespace</span>
+<span class="nn">using</span> <span class="n">wrapper</span>
+
+<span class="err">#</span> <span class="n">Initialize</span> <span class="n">instance</span> <span class="n">of</span> <span class="n">api</span> <span class="k">class</span>
+<span class="nc">wrapper</span><span class="p">.</span><span class="n">api</span> <span class="n">pd</span> <span class="p">=</span> <span class="k">new</span> <span class="n">wrapper</span><span class="p">.</span><span class="nf">api</span><span class="p">(</span><span class="s">"ABCdef123MNO456PQR789xyz"</span><span class="p">);</span>
+
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>ABCdef123MNO456PQR789xyz</code> with your API key.</p>
+</blockquote>
+
+<p>ParallelDots AI APIs uses API keys to allow access to the API. You can register a new API key at our <a href="https://www.paralleldots.com/sign-up">developer portal</a>.</p>
+
+<aside class="notice">
+You must replace <code>ABCdef123MNO456PQR789xyz</code> with your personal API key.
+</aside>
 <h1 id='sentiment'>/SENTIMENT</h1><h2 id='strong-em-post-em-strong'><strong><em>POST</em></strong></h2>
 <p><strong>Summary:</strong> Sentiment</p>
 
 <p><strong>Description:</strong> Understand the sentiment of the news.</p>
-<h3 id='http-request'>HTTP Request</h3>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'paralleldots'</span>
+
+<span class="n">sentiment</span><span class="p">(</span> <span class="s2">"Come on, lets play together"</span> <span class="p">)</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">paralleldots</span> <span class="kn">import</span> <span class="n">sentiment</span>
+
+<span class="n">sentiment</span><span class="p">(</span> <span class="s">"Come on, lets play together"</span> <span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: application/json'</span> <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"formData"</span><span class="o">}</span> <span class="s1">'https://apis.paralleldots.com/v2/sentiment?text=Come%20on%2C%20lets%20play%20together.&amp;api_key=ABCdef123MNO456PQR789xyz'</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">paralleldots.ParallelDots</span><span class="o">;</span>
+
+<span class="n">ParallelDots</span> <span class="n">pd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ParallelDots</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">sentiment</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="na">sentiment</span><span class="o">(</span><span class="s">"Come on, lets play together"</span><span class="o">);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sentiment</span><span class="o">);</span>
+
+</code></pre><pre class="highlight php tab-php"><code>require(__DIR__ . '/vendor/paralleldots/apis/autoload.php');
+sentiment("Come on, lets play together");
+
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">sentiment</span> <span class="p">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">sentiment</span><span class="p">(</span><span class="s">"Come on, lets play together"</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">sentiment</span><span class="p">);</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"probabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"positive"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.557268</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"neutral"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.417357</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"negative"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.025374</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"By accessing ParallelDots API or using information generated by ParallelDots API, you are agreeing to be bound by the ParallelDots API Terms of Use: http://www.paralleldots.com/terms-and-conditions"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"positive"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
 <p><code>***POST*** /sentiment</code> </p>
 
 <p><strong>Parameters</strong></p>
@@ -392,7 +468,35 @@
 <p><strong>Summary:</strong> Similarity</p>
 
 <p><strong>Description:</strong> Semantic Analysis API helps users cluster similar articles by understanding the relatedness between different content and streamlines research by eliminating redundant text contents.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'paralleldots'</span>
+
+<span class="n">similarity</span><span class="p">(</span> <span class="s2">"Sachin is the greatest batsman"</span><span class="p">,</span> <span class="s2">"Tendulkar is the finest cricketer"</span> <span class="p">)</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">paralleldots</span> <span class="kn">import</span> <span class="n">similarity</span>
+
+<span class="n">similarity</span><span class="p">(</span> <span class="s">"Sachin is the greatest batsman"</span><span class="p">,</span> <span class="s">"Tendulkar is the finest cricketer"</span> <span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: application/json'</span> <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"formData"</span><span class="o">}</span> <span class="s1">'https://apis.paralleldots.com/v2/similarity?text_1=Sachin%20is%20the%20greatest%20batsman&amp;text_2=Tendulkar%20is%20the%20finest%20cricketer&amp;api_key=ABCdef123MNO456PQR789xyz'</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">paralleldots.ParallelDots</span><span class="o">;</span>
+
+<span class="n">ParallelDots</span> <span class="n">pd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ParallelDots</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">similarity</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="na">similarity</span><span class="o">(</span><span class="s">"Sachin is the greatest batsman"</span><span class="o">,</span> <span class="s">"Tendulkar is the finest cricketer"</span><span class="o">);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">similarity</span><span class="o">);</span>
+
+</code></pre><pre class="highlight php tab-php"><code>require(__DIR__ . '/vendor/paralleldots/apis/autoload.php');
+similarity("Sachin is the greatest batsman", "Tendulkar is the finest cricketer");
+
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">similarity</span> <span class="p">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">similarity</span><span class="p">(</span><span class="s">"Sachin is the greatest batsman"</span><span class="p">,</span> <span class="s">"Tendulkar is the finest cricketer"</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">similarity</span><span class="p">);</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"By accessing ParallelDots API or using information generated by ParallelDots API, you are agreeing to be bound by the ParallelDots API Terms of Use: http://www.paralleldots.com/terms-and-conditions"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"actual_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.842932</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"normalized_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.931469</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
 <p><code>***POST*** /similarity</code> </p>
 
 <p><strong>Parameters</strong></p>
@@ -454,7 +558,46 @@
 <p><strong>Summary:</strong> Entitiy Extraction</p>
 
 <p><strong>Description:</strong> Named-entity recognition(NER) can identify individuals, companies, places, organization, cities and other various type of entities. API can extract this information from any type of text, web page or social media network.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'paralleldots'</span>
+
+<span class="n">ner</span><span class="p">(</span> <span class="s2">"Narendra Modi is the prime minister of India"</span> <span class="p">)</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">paralleldots</span> <span class="kn">import</span> <span class="n">ner</span>
+
+<span class="n">ner</span><span class="p">(</span> <span class="s">"Narendra Modi is the prime minister of India"</span> <span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST --header <span class="s1">'Content-Type: application/json'</span> --header <span class="s1">'Accept: application/json'</span> <span class="s1">'https://apis.paralleldots.com/v2/ner?text=Narendra%20Modi%20is%20the%20prime%20minister%20of%20India&amp;api_key=ABCdef123MNO456PQR789xyz'</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">paralleldots.ParallelDots</span><span class="o">;</span>
+
+<span class="n">ParallelDots</span> <span class="n">pd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ParallelDots</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">ner</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="na">ner</span><span class="o">(</span><span class="s">"Narendra Modi is the prime minister of India"</span><span class="o">);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ner</span><span class="o">);</span>
+
+</code></pre><pre class="highlight php tab-php"><code>require(__DIR__ . '/vendor/paralleldots/apis/autoload.php');
+ner( "Narendra Modi is the prime minister of India" );
+
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">ner</span> <span class="p">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">ner</span><span class="p">(</span> <span class="s">"Narendra Modi is the prime minister of India"</span> <span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">ner</span><span class="p">);</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"By accessing ParallelDots API or using information generated by ParallelDots API, you are agreeing to be bound by the ParallelDots API Terms of Use: http://www.paralleldots.com/terms-and-conditions"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"entities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"place"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"India"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9263</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Narendra Modi"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.951439</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
 <p><code>***POST*** /ner</code> </p>
 
 <p><strong>Parameters</strong></p>
@@ -509,7 +652,56 @@
 <p><strong>Summary:</strong> Keywords</p>
 
 <p><strong>Description:</strong> Keyword Generator are powerful tools in text analysis that can be used to index data, generate tag clouds and accelerate the searching time. It generates an extensive list of relevant keywords and phrases to make research more context focussed.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'paralleldots'</span>
+
+<span class="n">keywords</span><span class="p">(</span><span class="s2">"Prime Minister Narendra Modi tweeted a link to the speech Human Resource Development Minister Smriti Irani made in the Lok Sabha during the debate on the ongoing JNU row and the suicide of Dalit scholar Rohith Vemula at the Hyderabad Central University."</span><span class="p">)</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">paralleldots</span> <span class="kn">import</span> <span class="n">keywords</span>
+
+<span class="n">keywords</span><span class="p">(</span><span class="s">"Prime Minister Narendra Modi tweeted a link to the speech Human Resource Development Minister Smriti Irani made in the Lok Sabha during the debate on the ongoing JNU row and the suicide of Dalit scholar Rohith Vemula at the Hyderabad Central University."</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: application/json'</span> <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"formData"</span><span class="o">}</span> <span class="s1">'https://apis.paralleldots.com/v2/keywords?text=%22Prime%20Minister%20Narendra%20Modi%20tweeted%20a%20link%20to%20the%20speech%20Human%20Resource%20Development%20Minister%20Smriti%20Irani%20made%20in%20the%20Lok%20Sabha%20during%20the%20debate%20on%20the%20ongoing%20JNU%20row%20and%20the%20suicide%20of%20Dalit%20scholar%20Rohith%20Vemula%20at%20the%20Hyderabad%20Central%20University.&amp;api_key=ABCdef123MNO456PQR789xyz'</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">paralleldots.ParallelDots</span><span class="o">;</span>
+
+<span class="n">ParallelDots</span> <span class="n">pd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ParallelDots</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">keywords</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="na">keywords</span><span class="o">(</span><span class="s">"Prime Minister Narendra Modi tweeted a link to the speech Human Resource Development Minister Smriti Irani made in the Lok Sabha during the debate on the ongoing JNU row and the suicide of Dalit scholar Rohith Vemula at the Hyderabad Central University."</span><span class="o">);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">keywords</span><span class="o">);</span>
+
+</code></pre><pre class="highlight php tab-php"><code>require(__DIR__ . '/vendor/paralleldots/apis/autoload.php');
+keywords("Prime Minister Narendra Modi tweeted a link to the speech Human Resource Development Minister Smriti Irani made in the Lok Sabha during the debate on the ongoing JNU row and the suicide of Dalit scholar Rohith Vemula at the Hyderabad Central University.");
+
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">keywords</span> <span class="p">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">keywords</span><span class="p">(</span><span class="s">"Prime Minister Narendra Modi tweeted a link to the speech Human Resource Development Minister Smriti Irani made in the Lok Sabha during the debate on the ongoing JNU row and the suicide of Dalit scholar Rohith Vemula at the Hyderabad Central University."</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">keywords</span><span class="p">);</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"keyword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prime Minister Narendra Modi"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.857594</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"keyword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"link"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.913924</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"keyword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"speech Human Resource"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.70655</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"keyword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smriti"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.860351</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"keyword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lok"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.945534</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"By accessing ParallelDots API or using information generated by ParallelDots API, you are agreeing to be bound by the ParallelDots API Terms of Use: http://www.paralleldots.com/terms-and-conditions"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='http-request-4'>HTTP Request</h3>
 <p><code>***POST*** /keywords</code> </p>
 
 <p><strong>Parameters</strong></p>
@@ -564,7 +756,84 @@
 <p><strong>Summary:</strong> taxonomy</p>
 
 <p><strong>Description:</strong> Text Classification can be useful in understanding customer behaviour by categorizing conversations on social networks, feedback and other web sources.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'paralleldots'</span>
+
+<span class="n">taxonomy</span><span class="p">(</span><span class="s2">"Prime Minister Narendra Modi tweeted a link to the speech Human Resource Development Minister Smriti Irani made in the Lok Sabha during the debate on the ongoing JNU row and the suicide of Dalit scholar Rohith Vemula at the Hyderabad Central University."</span><span class="p">)</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">paralleldots</span> <span class="kn">import</span> <span class="n">taxonomy</span>
+
+<span class="n">taxonomy</span><span class="p">(</span><span class="s">"Prime Minister Narendra Modi tweeted a link to the speech Human Resource Development Minister Smriti Irani made in the Lok Sabha during the debate on the ongoing JNU row and the suicide of Dalit scholar Rohith Vemula at the Hyderabad Central University."</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: application/json'</span> <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"formData"</span><span class="o">}</span> <span class="s1">'https://apis.paralleldots.com/v2/taxonomy?text=%22Prime%20Minister%20Narendra%20Modi%20tweeted%20a%20link%20to%20the%20speech%20Human%20Resource%20Development%20Minister%20Smriti%20Irani%20made%20in%20the%20Lok%20Sabha%20during%20the%20debate%20on%20the%20ongoing%20JNU%20row%20and%20the%20suicide%20of%20Dalit%20scholar%20Rohith%20Vemula%20at%20the%20Hyderabad%20Central%20University.&amp;api_key=ABCdef123MNO456PQR789xyz'</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">paralleldots.ParallelDots</span><span class="o">;</span>
+
+<span class="n">ParallelDots</span> <span class="n">pd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ParallelDots</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">taxonomy</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="na">taxonomy</span><span class="o">(</span><span class="s">"Prime Minister Narendra Modi tweeted a link to the speech Human Resource Development Minister Smriti Irani made in the Lok Sabha during the debate on the ongoing JNU row and the suicide of Dalit scholar Rohith Vemula at the Hyderabad Central University."</span><span class="o">);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">taxonomy</span><span class="o">);</span>
+
+</code></pre><pre class="highlight php tab-php"><code>require(__DIR__ . '/vendor/paralleldots/apis/autoload.php');
+taxonomy("Prime Minister Narendra Modi tweeted a link to the speech Human Resource Development Minister Smriti Irani made in the Lok Sabha during the debate on the ongoing JNU row and the suicide of Dalit scholar Rohith Vemula at the Hyderabad Central University.");
+
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">taxonomy</span> <span class="p">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">taxonomy</span><span class="p">(</span><span class="s">"Prime Minister Narendra Modi tweeted a link to the speech Human Resource Development Minister Smriti Irani made in the Lok Sabha during the debate on the ongoing JNU row and the suicide of Dalit scholar Rohith Vemula at the Hyderabad Central University."</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">taxonomy</span><span class="p">);</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"By accessing ParallelDots API or using information generated by ParallelDots API, you are agreeing to be bound by the ParallelDots API Terms of Use: http://www.paralleldots.com/terms-and-conditions"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taxonomy"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"politics"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.801695</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"law"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.715046</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"terrorism"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.631782</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"geography"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.61001</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"world politics"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.475048</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"crime"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.464361</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"religion"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.434293</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"education"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.39257</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"business"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.308695</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mining"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.307659</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"defense"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.298858</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"health"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.222498</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='http-request-5'>HTTP Request</h3>
 <p><code>***POST*** /taxonomy</code> </p>
 
 <p><strong>Parameters</strong></p>
@@ -619,7 +888,42 @@
 <p><strong>Summary:</strong> emotion</p>
 
 <p><strong>Description:</strong> Sometimes the three classes of sentiment (positive, negative and neutral) are not sufficient to understand the nuances regarding the underlying tone of a sentence. Our Emotion Analysis classifier is trained on our proprietary dataset and tells whether the underlying emotion behind a message is: Happy, Sad, Angry, Fearful, Excited, Funny or Indifferent.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'paralleldots'</span>
+
+<span class="n">emotion</span><span class="p">(</span><span class="s2">"Prime Minister Narendra Modi tweeted a link to the speech Human Resource Development Minister Smriti Irani made in the Lok Sabha during the debate on the ongoing JNU row and the suicide of Dalit scholar Rohith Vemula at the Hyderabad Central University."</span><span class="p">)</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">paralleldots</span> <span class="kn">import</span> <span class="n">emotion</span>
+
+<span class="n">emotion</span><span class="p">(</span><span class="s">"Prime Minister Narendra Modi tweeted a link to the speech Human Resource Development Minister Smriti Irani made in the Lok Sabha during the debate on the ongoing JNU row and the suicide of Dalit scholar Rohith Vemula at the Hyderabad Central University."</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: application/json'</span> <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"formData"</span><span class="o">}</span> <span class="s1">'https://apis.paralleldots.com/v2/emotion?text=%22Prime%20Minister%20Narendra%20Modi%20tweeted%20a%20link%20to%20the%20speech%20Human%20Resource%20Development%20Minister%20Smriti%20Irani%20made%20in%20the%20Lok%20Sabha%20during%20the%20debate%20on%20the%20ongoing%20JNU%20row%20and%20the%20suicide%20of%20Dalit%20scholar%20Rohith%20Vemula%20at%20the%20Hyderabad%20Central%20University.&amp;api_key=ABCdef123MNO456PQR789xyz'</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">paralleldots.ParallelDots</span><span class="o">;</span>
+
+<span class="n">ParallelDots</span> <span class="n">pd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ParallelDots</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">emotion</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="na">emotion</span><span class="o">(</span><span class="s">"Prime Minister Narendra Modi tweeted a link to the speech Human Resource Development Minister Smriti Irani made in the Lok Sabha during the debate on the ongoing JNU row and the suicide of Dalit scholar Rohith Vemula at the Hyderabad Central University."</span><span class="o">);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">emotion</span><span class="o">);</span>
+
+</code></pre><pre class="highlight php tab-php"><code>require(__DIR__ . '/vendor/paralleldots/apis/autoload.php');
+emotion("Prime Minister Narendra Modi tweeted a link to the speech Human Resource Development Minister Smriti Irani made in the Lok Sabha during the debate on the ongoing JNU row and the suicide of Dalit scholar Rohith Vemula at the Hyderabad Central University.");
+
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">emotion</span> <span class="p">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">emotion</span><span class="p">(</span><span class="s">"Prime Minister Narendra Modi tweeted a link to the speech Human Resource Development Minister Smriti Irani made in the Lok Sabha during the debate on the ongoing JNU row and the suicide of Dalit scholar Rohith Vemula at the Hyderabad Central University."</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">emotion</span><span class="p">);</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"emotion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"happy"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"probabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"angry"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.060821</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"indifferent"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.177633</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"sad"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.06691</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"excited"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.279476</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"happy"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.41516</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"By accessing ParallelDots API or using information generated by ParallelDots API, you are agreeing to be bound by the ParallelDots API Terms of Use: http://www.paralleldots.com/terms-and-conditions"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='http-request-6'>HTTP Request</h3>
 <p><code>***POST*** /emotion</code> </p>
 
 <p><strong>Parameters</strong></p>
@@ -674,7 +978,42 @@
 <p><strong>Summary:</strong> Intent</p>
 
 <p><strong>Description:</strong> This classifier tells whether the underlying intention behind a sentence is opinion, news, marketing, complaint, suggestion, apprectiation, query. This is trained on our proprietary dataset.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'paralleldots'</span>
+
+<span class="n">intent</span><span class="p">(</span><span class="s2">"Prime Minister Narendra Modi tweeted a link to the speech Human Resource Development Minister Smriti Irani made in the Lok Sabha during the debate on the ongoing JNU row and the suicide of Dalit scholar Rohith Vemula at the Hyderabad Central University."</span><span class="p">)</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">paralleldots</span> <span class="kn">import</span> <span class="n">intent</span>
+
+<span class="n">intent</span><span class="p">(</span><span class="s">"Prime Minister Narendra Modi tweeted a link to the speech Human Resource Development Minister Smriti Irani made in the Lok Sabha during the debate on the ongoing JNU row and the suicide of Dalit scholar Rohith Vemula at the Hyderabad Central University."</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: application/json'</span> <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"formData"</span><span class="o">}</span> <span class="s1">'https://apis.paralleldots.com/v2/intent?text=%22Prime%20Minister%20Narendra%20Modi%20tweeted%20a%20link%20to%20the%20speech%20Human%20Resource%20Development%20Minister%20Smriti%20Irani%20made%20in%20the%20Lok%20Sabha%20during%20the%20debate%20on%20the%20ongoing%20JNU%20row%20and%20the%20suicide%20of%20Dalit%20scholar%20Rohith%20Vemula%20at%20the%20Hyderabad%20Central%20University.&amp;api_key=ABCdef123MNO456PQR789xyz'</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">paralleldots.ParallelDots</span><span class="o">;</span>
+
+<span class="n">ParallelDots</span> <span class="n">pd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ParallelDots</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">intent</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="na">intent</span><span class="o">(</span><span class="s">"Prime Minister Narendra Modi tweeted a link to the speech Human Resource Development Minister Smriti Irani made in the Lok Sabha during the debate on the ongoing JNU row and the suicide of Dalit scholar Rohith Vemula at the Hyderabad Central University."</span><span class="o">);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span>
+
+</code></pre><pre class="highlight php tab-php"><code>require(__DIR__ . '/vendor/paralleldots/apis/autoload.php');
+intent("Prime Minister Narendra Modi tweeted a link to the speech Human Resource Development Minister Smriti Irani made in the Lok Sabha during the debate on the ongoing JNU row and the suicide of Dalit scholar Rohith Vemula at the Hyderabad Central University.");
+
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">intent</span> <span class="p">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">intent</span><span class="p">(</span><span class="s">"Prime Minister Narendra Modi tweeted a link to the speech Human Resource Development Minister Smriti Irani made in the Lok Sabha during the debate on the ongoing JNU row and the suicide of Dalit scholar Rohith Vemula at the Hyderabad Central University."</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">intent</span><span class="p">);</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"probabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"news"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.917396</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"other"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.001998</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"query"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000132</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"feedback/opinion"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.069</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"spam"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.011474</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"By accessing ParallelDots API or using information generated by ParallelDots API, you are agreeing to be bound by the ParallelDots API Terms of Use: http://www.paralleldots.com/terms-and-conditions"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"intent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"news"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='http-request-7'>HTTP Request</h3>
 <p><code>***POST*** /intent</code> </p>
 
 <p><strong>Parameters</strong></p>
@@ -729,7 +1068,35 @@
 <p><strong>Summary:</strong> Multilang</p>
 
 <p><strong>Description:</strong> Understand the underlying tone of the message for sentences in French, Portuguese and Spanish. We will add more languages over time, watch this space.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'paralleldots'</span>
+
+<span class="n">multilang</span><span class="p">(</span><span class="s2">"Me encanta jugar al baloncesto"</span><span class="p">,</span> <span class="s2">"es"</span><span class="p">)</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">paralleldots</span> <span class="kn">import</span> <span class="n">multilang</span>
+
+<span class="n">multilang</span><span class="p">(</span><span class="s">"Me encanta jugar al baloncesto"</span><span class="p">,</span> <span class="s">"es"</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST --header <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> --header <span class="s1">'Accept: application/json'</span> -d <span class="s1">'text=Me%20encanta%20jugar%20al%20baloncesto.&amp;api_key=ABCdef123MNO456PQR789xyz&amp;lang_code=en'</span> <span class="s1">'https://apis.paralleldots.com/v2/multilang'</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">paralleldots.ParallelDots</span><span class="o">;</span>
+
+<span class="n">ParallelDots</span> <span class="n">pd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ParallelDots</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">multilang</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="na">multilang</span><span class="o">(</span><span class="s">"Me encanta jugar al baloncesto"</span><span class="o">,</span> <span class="s">"es"</span><span class="o">);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">multilang</span><span class="o">);</span>
+
+</code></pre><pre class="highlight php tab-php"><code>require(__DIR__ . '/vendor/paralleldots/apis/autoload.php');
+multilang("Me encanta jugar al baloncesto", "es");
+
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">multilang</span> <span class="p">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">multilang</span><span class="p">(</span><span class="s">"Me encanta jugar al baloncesto"</span><span class="p">,</span> <span class="s">"es"</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">multilang</span><span class="p">);</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"positive"</span><span class="p">,</span><span class="w"> 
+</span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='http-request-8'>HTTP Request</h3>
 <p><code>***POST*** /multilang</code> </p>
 
 <p><strong>Parameters</strong></p>
@@ -791,7 +1158,36 @@
 <p><strong>Summary:</strong> Abuse</p>
 
 <p><strong>Description:</strong> Abusive content specifier specifies whether the content is abusive or not.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'paralleldots'</span>
+
+<span class="n">abuse</span><span class="p">(</span><span class="s2">"you f**king a$$hole"</span><span class="p">)</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">paralleldots</span> <span class="kn">import</span> <span class="n">abuse</span>
+
+<span class="n">abuse</span><span class="p">(</span><span class="s">"you f**king a$$hole"</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST --header <span class="s1">'Content-Type: application/x-www-form-urlencoded'</span> --header <span class="s1">'Accept: application/json'</span> -d <span class="s1">'text=you%20f**king%20a%24%24hole&amp;api_key=ABCdef123MNO456PQR789xyz'</span> <span class="s1">'https://apis.paralleldots.com/v2/abuse'</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">paralleldots.ParallelDots</span><span class="o">;</span>
+
+<span class="n">ParallelDots</span> <span class="n">pd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ParallelDots</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">abuse</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="na">abuse</span><span class="o">(</span><span class="s">"you f**king a$$hole"</span><span class="o">);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">abuse</span><span class="o">);</span>
+
+</code></pre><pre class="highlight php tab-php"><code>require(__DIR__ . '/vendor/paralleldots/apis/autoload.php');
+abuse("you f**king a$$hole");
+
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">abuse</span> <span class="p">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">abuse</span><span class="p">(</span><span class="s">"you f**king a$$hole"</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">abuse</span><span class="p">);</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"By accessing ParallelDots API or using information generated by ParallelDots API, you are agreeing to be bound by the ParallelDots API Terms of Use: http://www.paralleldots.com/terms-and-conditions"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sentence_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Abusive"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.953125</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='http-request-9'>HTTP Request</h3>
 <p><code>***POST*** /abuse</code> </p>
 
 <p><strong>Parameters</strong></p>
@@ -846,7 +1242,39 @@
 <p><strong>Summary:</strong> Sentiment Social</p>
 
 <p><strong>Description:</strong> Understand the social sentiment of your brand, product or service while monitoring online conversations through twitter, facebook etc..</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'paralleldots'</span>
+
+<span class="n">sentiment_social</span><span class="p">(</span><span class="s2">"I left my camera at home"</span><span class="p">)</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">paralleldots</span> <span class="kn">import</span> <span class="n">sentiment_social</span>
+
+<span class="n">sentiment_social</span><span class="p">(</span><span class="s">"I left my camera at home"</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: application/json'</span> <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"formData"</span><span class="o">}</span> <span class="s1">'https://apis.paralleldots.com/v2/sentiment_social?text=I%20left%20my%20camera%20at%20home.&amp;api_key=ABCdef123MNO456PQR789xyz'</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">paralleldots.ParallelDots</span><span class="o">;</span>
+
+<span class="n">ParallelDots</span> <span class="n">pd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ParallelDots</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">sentiment_social</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="na">sentiment_social</span><span class="o">(</span><span class="s">"I left my camera at home"</span><span class="o">);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">sentiment_social</span><span class="o">);</span>
+
+</code></pre><pre class="highlight php tab-php"><code>require(__DIR__ . '/vendor/paralleldots/apis/autoload.php');
+sentiment_social("I left my camera at home");
+
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">sentiment_social</span> <span class="p">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">sentiment_social</span><span class="p">(</span><span class="s">"I left my camera at home"</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">sentiment_social</span><span class="p">);</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"probabilities"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"positive"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.557268</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"neutral"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.417357</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"negative"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.025374</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"By accessing ParallelDots API or using information generated by ParallelDots API, you are agreeing to be bound by the ParallelDots API Terms of Use: http://www.paralleldots.com/terms-and-conditions"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sentiment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"positive"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-10'>HTTP Request</h3>
 <p><code>***POST*** /sentiment_social</code> </p>
 
 <p><strong>Parameters</strong></p>
@@ -901,7 +1329,241 @@
 <p><strong>Summary:</strong> Text Parser</p>
 
 <p><strong>Description:</strong> Understand the text entered by using our API</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'paralleldots'</span>
+
+<span class="n">text_parser</span><span class="p">(</span><span class="s2">"Prime Minister Narendra Modi tweeted a link to the speech Human Resource Development Minister Smriti Irani made in the Lok Sabha during the debate on the ongoing JNU row and the suicide of Dalit scholar Rohith Vemula at the Hyderabad Central University."</span><span class="p">)</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">paralleldots</span> <span class="kn">import</span> <span class="n">text_parser</span>
+
+<span class="n">text_parser</span><span class="p">(</span><span class="s">"Prime Minister Narendra Modi tweeted a link to the speech Human Resource Development Minister Smriti Irani made in the Lok Sabha during the debate on the ongoing JNU row and the suicide of Dalit scholar Rohith Vemula at the Hyderabad Central University."</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: application/json'</span> <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"formData"</span><span class="o">}</span> <span class="s1">'https://apis.paralleldots.com/v2/text_parser?text=Prime%20Minister%20Narendra%20Modi%20tweeted%20a%20link%20to%20the%20speech%20Human%20Resource%20Development%20Minister%20Smriti%20Irani%20made%20in%20the%20Lok%20Sabha%20during%20the%20debate%20on%20the%20ongoing%20JNU%20row%20and%20the%20suicide%20of%20Dalit%20scholar%20Rohith%20Vemula%20at%20the%20Hyderabad%20Central%20University.&amp;api_key=ABCdef123MNO456PQR789xyz'</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">paralleldots.ParallelDots</span><span class="o">;</span>
+
+<span class="n">ParallelDots</span> <span class="n">pd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ParallelDots</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">text_parser</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="na">text_parser</span><span class="o">(</span><span class="s">"Prime Minister Narendra Modi tweeted a link to the speech Human Resource Development Minister Smriti Irani made in the Lok Sabha during the debate on the ongoing JNU row and the suicide of Dalit scholar Rohith Vemula at the Hyderabad Central University."</span><span class="o">);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">text_parser</span><span class="o">);</span>
+
+</code></pre><pre class="highlight php tab-php"><code>require(__DIR__ . '/vendor/paralleldots/apis/autoload.php');
+text_parser("Prime Minister Narendra Modi tweeted a link to the speech Human Resource Development Minister Smriti Irani made in the Lok Sabha during the debate on the ongoing JNU row and the suicide of Dalit scholar Rohith Vemula at the Hyderabad Central University.");
+
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">text_parser</span> <span class="p">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">text_parser</span><span class="p">(</span><span class="s">"Prime Minister Narendra Modi tweeted a link to the speech Human Resource Development Minister Smriti Irani made in the Lok Sabha during the debate on the ongoing JNU row and the suicide of Dalit scholar Rohith Vemula at the Hyderabad Central University."</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">text_parser</span><span class="p">);</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"By accessing ParallelDots API or using information generated by ParallelDots API, you are agreeing to be bound by the ParallelDots API Terms of Use: http://www.paralleldots.com/terms-and-conditions"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"output"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compound"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Prime"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noun"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compound"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Minister"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noun"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compound"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Narendra"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noun"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nominal subject"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Modi"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noun"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"root"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tweeted"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"verb"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"determiner"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"determiner"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"direct object"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"link"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noun"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prepositional modifier"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"to"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"preposition or conjunction"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"determiner"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"the"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"determiner"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compound"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"speech"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noun"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compound"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Human"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noun"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compound"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Resource"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noun"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compound"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Development"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noun"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compound"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Minister"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noun"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compound"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smriti"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noun"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object of a preposition"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Irani"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noun"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prepositional modifier"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"in"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"preposition or conjunction"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"determiner"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"the"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"determiner"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compound"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lok"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noun"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object of a preposition"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sabha"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noun"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prepositional modifier"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"during"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"preposition or conjunction"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"determiner"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"the"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"determiner"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object of a preposition"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"debate"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noun"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prepositional modifier"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"on"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"preposition or conjunction"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"determiner"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"the"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"determiner"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"adjectival modifier"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ongoing"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"adjective"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compound"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JNU"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noun"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object of a preposition"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"row"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noun"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"coordinating conjunction"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"and"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"conjuction"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"determiner"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"the"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"determiner"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"conjunct"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"suicide"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noun"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prepositional modifier"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"of"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"preposition or conjunction"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compound"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dalit"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noun"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compound"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"scholar"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noun"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compound"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rohith"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noun"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object of a preposition"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Vemula"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noun"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prepositional modifier"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"at"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"preposition or conjunction"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"determiner"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"the"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"determiner"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compound"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hyderabad"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noun"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"compound"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Central"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noun"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"Dependency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"object of a preposition"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"University"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Tags"</span><span class="p">:</span><span class="w"> </span><span class="s2">"noun"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='http-request-11'>HTTP Request</h3>
 <p><code>***POST*** /text_parser</code> </p>
 
 <p><strong>Parameters</strong></p>
@@ -956,7 +1618,50 @@
 <p><strong>Summary:</strong> Custom Classifier</p>
 
 <p><strong>Description:</strong> Get Sentence classified on your own fields without the hassel of training a model.</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'paralleldots'</span>
+
+<span class="n">custom_classifier</span><span class="p">(</span><span class="s2">"The brownie is worst in the world."</span><span class="p">,</span><span class="s2">"qufhjenfUHWNGU454kknNN"</span><span class="p">)</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">paralleldots</span> <span class="kn">import</span> <span class="n">custom_classifier</span>
+
+<span class="n">custom_classifier</span><span class="p">(</span><span class="s">"The brownie is worst in the world."</span><span class="p">,</span><span class="s">"qufhjenfUHWNGU454kknNN"</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: application/json'</span> <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"formData"</span><span class="o">}</span> <span class="s1">'https://apis.paralleldots.com/v2/custom_classifier?text=The%20brownie%20is%20worst%20in%20the%20world.&amp;api_key=ABCdef123MNO456PQR789xyz&amp;id=qufhjenfUHWNGU454kknNN'</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">paralleldots.ParallelDots</span><span class="o">;</span>
+
+<span class="n">ParallelDots</span> <span class="n">pd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ParallelDots</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">custom_classifier</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="na">custom_classifier</span><span class="o">(</span><span class="s">"The brownie is worst in the world."</span><span class="o">,</span><span class="s">"qufhjenfUHWNGU454kknNN"</span><span class="o">);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">custom_classifier</span><span class="o">);</span>
+
+</code></pre><pre class="highlight php tab-php"><code>require(__DIR__ . '/vendor/paralleldots/apis/autoload.php');
+custom_classifier("The brownie is worst in the world.","qufhjenfUHWNGU454kknNN");
+
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">custom_classifier</span> <span class="p">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">custom_classifier</span><span class="p">(</span><span class="s">"The brownie is worst in the world."</span><span class="p">,</span><span class="s">"qufhjenfUHWNGU454kknNN"</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">custom_classifier</span><span class="p">);</span>
+
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>qufhjenfUHWNGU454kknNN</code> with your Published ID for your cusstom categories..</p>
+
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"By accessing ParallelDots API or using information generated by ParallelDots API, you are agreeing to be bound by the ParallelDots API Terms of Use: http://www.paralleldots.com/terms-and-conditions"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"taxonomy"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"news"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.821275</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"home"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.743163</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"places"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"confidence_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.648853</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='http-request-12'>HTTP Request</h3>
 <p><code>***POST*** /custom_classifier</code> </p>
 
 <p><strong>Parameters</strong></p>
@@ -1077,6 +1782,11 @@
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="ruby">ruby</a>
+                <a href="#" data-language-name="python">python</a>
+                <a href="#" data-language-name="java">java</a>
+                <a href="#" data-language-name="php">php</a>
+                <a href="#" data-language-name="csharp">csharp</a>
           </div>
       </div>
     </div>
