@@ -326,6 +326,14 @@
               </ul>
           </li>
           <li>
+            <a href="#popularity" class="toc-h1 toc-link" data-title="/POPULARITY">/POPULARITY</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#strong-em-post-em-strong-13" class="toc-h2 toc-link" data-title="<strong><em>POST</em></strong>"><strong><em>POST</em></strong></a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </div>
@@ -1662,6 +1670,8 @@ custom_classifier("The brownie is worst in the world.","qufhjenfUHWNGU454kknNN")
 </span></code></pre><h3 id='http-request-12'>HTTP Request</h3>
 <p><code>***POST*** /custom_classifier</code> </p>
 
+<p>Get your own Publishing Key at our <a href="https://www.paralleldots.com/custom-classifier">developer portal</a>.</p>
+
 <p><strong>Parameters</strong></p>
 
 <table><thead>
@@ -1691,6 +1701,162 @@ custom_classifier("The brownie is worst in the world.","qufhjenfUHWNGU454kknNN")
 <td>id</td>
 <td>query</td>
 <td>Application id</td>
+<td>Yes</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Successful response</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Not Modified</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+</tr>
+</tbody></table>
+<h1 id='popularity'>/POPULARITY</h1><h2 id='strong-em-post-em-strong-13'><strong><em>POST</em></strong></h2>
+<p><strong>Summary:</strong> Popularity</p>
+
+<p><strong>Description:</strong> Get the virality score of your picture on socail media.</p>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"http://apis.paralleldots.com/v2/popularity"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"content-type"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Cache-Control"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'no-cache'</span>
+<span class="n">request</span><span class="p">[</span><span class="s2">"Postman-Token"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'9d4cbfbb-4e5f-6ae1-4236-1503f8824cdd'</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s2">"------WebKitFormBoundary7MA4YWxkTrZu0gW</span><span class="se">\r\n</span><span class="s2">Content-Disposition: form-data; name=</span><span class="se">\"</span><span class="s2">api_key</span><span class="se">\"\r\n\r\n</span><span class="s2">ABCdef123MNO456PQR789xyz(Your API key)</span><span class="se">\r\n</span><span class="s2">------WebKitFormBoundary7MA4YWxkTrZu0gW</span><span class="se">\r\n</span><span class="s2">Content-Disposition: form-data; name=</span><span class="se">\"</span><span class="s2">file</span><span class="se">\"</span><span class="s2">; filename=</span><span class="se">\"</span><span class="s2">path/to/your/image.jpg</span><span class="se">\"\r\n</span><span class="s2">Content-Type: image/jpeg</span><span class="se">\r\n\r\n\r\n</span><span class="s2">------WebKitFormBoundary7MA4YWxkTrZu0gW--"</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"http://apis.paralleldots.com/v2/popularity"</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="s">"------WebKitFormBoundary7MA4YWxkTrZu0gW</span><span class="se">\r\n</span><span class="s">Content-Disposition: form-data; name=</span><span class="se">\"</span><span class="s">api_key</span><span class="se">\"\r\n\r\n</span><span class="s">ABCdef123MNO456PQR789xyz(Your API key)</span><span class="se">\r\n</span><span class="s">------WebKitFormBoundary7MA4YWxkTrZu0gW</span><span class="se">\r\n</span><span class="s">Content-Disposition: form-data; name=</span><span class="se">\"</span><span class="s">file</span><span class="se">\"</span><span class="s">; filename=</span><span class="se">\"</span><span class="s">path/to/your/image.jpg</span><span class="se">\"\r\n</span><span class="s">Content-Type: image/jpeg</span><span class="se">\r\n\r\n\r\n</span><span class="s">------WebKitFormBoundary7MA4YWxkTrZu0gW--"</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'content-type'</span><span class="p">:</span> <span class="s">"multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"</span><span class="p">,</span>
+    <span class="s">'Cache-Control'</span><span class="p">:</span> <span class="s">"no-cache"</span><span class="p">,</span>
+    <span class="s">'Postman-Token'</span><span class="p">:</span> <span class="s">"62b2060f-6315-73f7-ea05-b081392760d6"</span>
+    <span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST <span class="se">\</span>
+  http://apis.paralleldots.com/v2/popularity <span class="se">\</span>
+  -H <span class="s1">'Cache-Control: no-cache'</span> <span class="se">\</span>
+  -H <span class="s1">'Postman-Token: 147fe5a8-73fe-fad4-716e-bb2ede5addc7'</span> <span class="se">\</span>
+  -H <span class="s1">'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'</span> <span class="se">\</span>
+  -F <span class="nv">api_key</span><span class="o">=</span>ABCdef123MNO456PQR789xyz<span class="o">(</span>Your API key<span class="o">)</span><span class="se">\</span>
+  -F <span class="nv">file</span><span class="o">=</span>@/path/to/your/image.jpg
+</code></pre><pre class="highlight java tab-java"><code><span class="n">OkHttpClient</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="n">OkHttpClient</span><span class="o">();</span>
+
+<span class="n">MediaType</span> <span class="n">mediaType</span> <span class="o">=</span> <span class="n">MediaType</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">"multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"</span><span class="o">);</span>
+<span class="n">RequestBody</span> <span class="n">body</span> <span class="o">=</span> <span class="n">RequestBody</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mediaType</span><span class="o">,</span> <span class="s">"------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"api_key\"\r\n\r\nABCdef123MNO456PQR789xyz(Your API key)\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"file\"; filename=\"/path/to/your/image.jpg\"\r\nContent-Type: image/jpeg\r\n\r\n\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--"</span><span class="o">);</span>
+<span class="n">Request</span> <span class="n">request</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Request</span><span class="o">.</span><span class="na">Builder</span><span class="o">()</span>
+  <span class="o">.</span><span class="na">url</span><span class="o">(</span><span class="s">"http://apis.paralleldots.com/v2/popularity"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="n">body</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"content-type"</span><span class="o">,</span> <span class="s">"multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Cache-Control"</span><span class="o">,</span> <span class="s">"no-cache"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Postman-Token"</span><span class="o">,</span> <span class="s">"ace7e0f0-19e7-dbbf-e0d8-f1bf1a515a61"</span><span class="o">)</span>
+  <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+
+<span class="n">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
+
+</code></pre><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HttpRequest</span><span class="p">();</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setUrl</span><span class="p">(</span><span class="s1">'http://apis.paralleldots.com/v2/popularity'</span><span class="p">);</span>
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setMethod</span><span class="p">(</span><span class="nx">HTTP_METH_POST</span><span class="p">);</span>
+
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setHeaders</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s1">'Postman-Token'</span> <span class="o">=&gt;</span> <span class="s1">'68c2ed29-57c2-ab39-e111-8d9db0713690'</span><span class="p">,</span>
+  <span class="s1">'Cache-Control'</span> <span class="o">=&gt;</span> <span class="s1">'no-cache'</span><span class="p">,</span>
+  <span class="s1">'content-type'</span> <span class="o">=&gt;</span> <span class="s1">'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'</span>
+<span class="p">));</span>
+
+<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setBody</span><span class="p">(</span><span class="s1">'------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="api_key"
+
+ABCdef123MNO456PQR789xyz(Your API key)
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="/path/to/your/image.jpg"
+Content-Type: image/jpeg
+
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW--'</span><span class="p">);</span>
+
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+
+  <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">HttpException</span> <span class="nv">$ex</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$ex</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"http://apis.paralleldots.com/v2/popularity"</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"Postman-Token"</span><span class="p">,</span> <span class="s">"4abcac81-4be1-a640-6846-4dce5df04005"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"Cache-Control"</span><span class="p">,</span> <span class="s">"no-cache"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"</span><span class="p">);</span>
+<span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"</span><span class="p">,</span> <span class="s">"------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"api_key\"\r\n\r\nABCdef123MNO456PQR789xyz(Your API key)\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"file\"; filename=\"/path/to/your/image.jpg\"\r\nContent-Type: image/jpeg\r\n\r\n\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
+<span class="n">IRestResponse</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>ABCdef123MNO456PQR789xyz</code> with your own API Key..</p>
+
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"Popular"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59.8144471645"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"By accessing ParallelDots API or using information generated by ParallelDots API, you are agreeing to be bound by the ParallelDots API Terms of Use: http://www.paralleldots.com/terms-and-conditions"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Not Popular"</span><span class="p">:</span><span class="w"> </span><span class="s2">"40.1855528355"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='http-request-13'>HTTP Request</h3>
+<p><code>***POST*** /popularity</code> </p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>file</td>
+<td>query</td>
+<td>Pass a image</td>
+<td>Yes</td>
+<td>file</td>
+</tr>
+<tr>
+<td>api_key</td>
+<td>query</td>
+<td>Apikey</td>
 <td>Yes</td>
 <td>string</td>
 </tr>
