@@ -1738,7 +1738,6 @@ custom_classifier("The brownie is worst in the world.","qufhjenfUHWNGU454kknNN")
 <span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="n">request</span><span class="p">[</span><span class="s2">"content-type"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'</span>
 <span class="n">request</span><span class="p">[</span><span class="s2">"Cache-Control"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'no-cache'</span>
-<span class="n">request</span><span class="p">[</span><span class="s2">"Postman-Token"</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'9d4cbfbb-4e5f-6ae1-4236-1503f8824cdd'</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">body</span> <span class="o">=</span> <span class="s2">"------WebKitFormBoundary7MA4YWxkTrZu0gW</span><span class="se">\r\n</span><span class="s2">Content-Disposition: form-data; name=</span><span class="se">\"</span><span class="s2">api_key</span><span class="se">\"\r\n\r\n</span><span class="s2">ABCdef123MNO456PQR789xyz(Your API key)</span><span class="se">\r\n</span><span class="s2">------WebKitFormBoundary7MA4YWxkTrZu0gW</span><span class="se">\r\n</span><span class="s2">Content-Disposition: form-data; name=</span><span class="se">\"</span><span class="s2">file</span><span class="se">\"</span><span class="s2">; filename=</span><span class="se">\"</span><span class="s2">path/to/your/image.jpg</span><span class="se">\"\r\n</span><span class="s2">Content-Type: image/jpeg</span><span class="se">\r\n\r\n\r\n</span><span class="s2">------WebKitFormBoundary7MA4YWxkTrZu0gW--"</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
@@ -1751,7 +1750,6 @@ custom_classifier("The brownie is worst in the world.","qufhjenfUHWNGU454kknNN")
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">'content-type'</span><span class="p">:</span> <span class="s">"multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"</span><span class="p">,</span>
     <span class="s">'Cache-Control'</span><span class="p">:</span> <span class="s">"no-cache"</span><span class="p">,</span>
-    <span class="s">'Postman-Token'</span><span class="p">:</span> <span class="s">"62b2060f-6315-73f7-ea05-b081392760d6"</span>
     <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="s">"POST"</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
@@ -1773,7 +1771,6 @@ custom_classifier("The brownie is worst in the world.","qufhjenfUHWNGU454kknNN")
   <span class="o">.</span><span class="na">post</span><span class="o">(</span><span class="n">body</span><span class="o">)</span>
   <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"content-type"</span><span class="o">,</span> <span class="s">"multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Cache-Control"</span><span class="o">,</span> <span class="s">"no-cache"</span><span class="o">)</span>
-  <span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">"Postman-Token"</span><span class="o">,</span> <span class="s">"ace7e0f0-19e7-dbbf-e0d8-f1bf1a515a61"</span><span class="o">)</span>
   <span class="o">.</span><span class="na">build</span><span class="o">();</span>
 
 <span class="n">Response</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">newCall</span><span class="o">(</span><span class="n">request</span><span class="o">).</span><span class="na">execute</span><span class="o">();</span>
@@ -1785,7 +1782,6 @@ custom_classifier("The brownie is worst in the world.","qufhjenfUHWNGU454kknNN")
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setMethod</span><span class="p">(</span><span class="nx">HTTP_METH_POST</span><span class="p">);</span>
 
 <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setHeaders</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
-  <span class="s1">'Postman-Token'</span> <span class="o">=&gt;</span> <span class="s1">'68c2ed29-57c2-ab39-e111-8d9db0713690'</span><span class="p">,</span>
   <span class="s1">'Cache-Control'</span> <span class="o">=&gt;</span> <span class="s1">'no-cache'</span><span class="p">,</span>
   <span class="s1">'content-type'</span> <span class="o">=&gt;</span> <span class="s1">'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'</span>
 <span class="p">));</span>
@@ -1811,7 +1807,6 @@ Content-Type: image/jpeg
 
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestClient</span><span class="p">(</span><span class="s">"http://apis.paralleldots.com/v2/popularity"</span><span class="p">);</span>
 <span class="kt">var</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RestRequest</span><span class="p">(</span><span class="n">Method</span><span class="p">.</span><span class="n">POST</span><span class="p">);</span>
-<span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"Postman-Token"</span><span class="p">,</span> <span class="s">"4abcac81-4be1-a640-6846-4dce5df04005"</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"Cache-Control"</span><span class="p">,</span> <span class="s">"no-cache"</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddHeader</span><span class="p">(</span><span class="s">"content-type"</span><span class="p">,</span> <span class="s">"multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"</span><span class="p">);</span>
 <span class="n">request</span><span class="p">.</span><span class="nf">AddParameter</span><span class="p">(</span><span class="s">"multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"</span><span class="p">,</span> <span class="s">"------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"api_key\"\r\n\r\nABCdef123MNO456PQR789xyz(Your API key)\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"file\"; filename=\"/path/to/your/image.jpg\"\r\nContent-Type: image/jpeg\r\n\r\n\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--"</span><span class="p">,</span> <span class="n">ParameterType</span><span class="p">.</span><span class="n">RequestBody</span><span class="p">);</span>
