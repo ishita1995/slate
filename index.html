@@ -273,7 +273,9 @@
         <h1 id='introduction'>Introduction</h1>
 <p>AI Powered Visual Analysis Apis  </p>
 
-<p><strong>Version:</strong> 2.0.0 </p>
+<p><strong>Version:</strong> 3.0.0 </p>
+
+<p>Base URL - https://apis.paralleldots.com/v3</p>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p>To authorize, use this code:</p>
@@ -284,7 +286,7 @@
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">paralleldots</span> <span class="kn">import</span> <span class="n">set_api_key</span>
 
 <span class="n">set_api_key</span><span class="p">(</span><span class="s">"ABCdef123MNO456PQR789xyz"</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>
+</code></pre><pre class="highlight shell tab-shell"><code>NA
 </code></pre><pre class="highlight java tab-java"><code><span class="n">from</span> <span class="n">paralleldots</span> <span class="kn">import</span> <span class="nn">set_api_key</span><span class="o">,</span> <span class="n">get_api_key</span>
 
 <span class="nf">set_api_key</span><span class="o">(</span><span class="s">"ABCdef123MNO456PQR789xyz"</span><span class="o">)</span>
@@ -311,7 +313,7 @@ You must replace <code>ABCdef123MNO456PQR789xyz</code> with your personal API ke
 <h1 id='nudity-detection'>Nudity Detection</h1><h2 id='strong-em-post-em-strong'><strong><em>POST</em></strong></h2>
 <p><strong>Summary:</strong> Nudity Detection</p>
 
-<p><strong>Description:</strong> Understand whether your image is safe to open at work.</p>
+<p><strong>Description:</strong> Inappropriate content classifier is a powerful tool to filter out pornographic images from social media feeds, forums, photo sharing apps, etc. ParallelDots inappropriate content classifier can filter such content and help build a safer platform for your community.</p>
 <pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'paralleldots'</span>
 <span class="n">path</span> <span class="o">=</span> <span class="s2">"/home/my_computer/Downloads/image_1.jpg"</span>
 
@@ -353,6 +355,8 @@ echo nsfw($path_to_image);
 
 <p><strong>Parameters</strong></p>
 
+<p>Either file or url is mandatory , do not send both parameters.</p>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -370,6 +374,13 @@ echo nsfw($path_to_image);
 <td>file</td>
 </tr>
 <tr>
+<td>url</td>
+<td>query</td>
+<td>Pass url of image file</td>
+<td>Yes</td>
+<td>string</td>
+</tr>
+<tr>
 <td>api_key</td>
 <td>query</td>
 <td>Apikey</td>
@@ -379,6 +390,22 @@ echo nsfw($path_to_image);
 </tbody></table>
 
 <p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Name  Description</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>output</td>
+<td>If the imgage safe to open at work or not</td>
+</tr>
+<tr>
+<td>prob</td>
+<td>The score of above output. It lies between 0 to 1 . Higher score states the higher confidence score of the output.</td>
+</tr>
+</tbody></table>
 
 <table><thead>
 <tr>
@@ -402,7 +429,7 @@ echo nsfw($path_to_image);
 <h1 id='virality-detection'>Virality Detection</h1><h2 id='strong-em-post-em-strong-2'><strong><em>POST</em></strong></h2>
 <p><strong>Summary:</strong> Virality Detection</p>
 
-<p><strong>Description:</strong> Understand the popularity score of your image.</p>
+<p><strong>Description:</strong> Virality Detection API gives a score to images based on their potential to go viral on the Internet. The AI model is trained using a super deep neural network on a massive corpus of images and their likes count as crawled from the open web. The score that you get as an output is the virality score of the input photo out of a maximum score of 100. </p>
 <pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'paralleldots'</span>
 
 <span class="n">path</span> <span class="o">=</span> <span class="s2">"/home/my_computer/Downloads/image_1.jpg"</span>
@@ -444,6 +471,8 @@ echo popularity($path_to_image);
 
 <p><strong>Parameters</strong></p>
 
+<p>Either file or url is mandatory , do not send both parameters.</p>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -457,8 +486,15 @@ echo popularity($path_to_image);
 <td>file</td>
 <td>query</td>
 <td>Pass a image file</td>
-<td>Yes</td>
+<td>Yes if url not provided</td>
 <td>file</td>
+</tr>
+<tr>
+<td>url</td>
+<td>query</td>
+<td>Pass url of image file</td>
+<td>Yes if file not provided</td>
+<td>string</td>
 </tr>
 <tr>
 <td>api_key</td>
@@ -470,6 +506,22 @@ echo popularity($path_to_image);
 </tbody></table>
 
 <p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Name  Description</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Popular</td>
+<td>The confidence score of the virality of the image. It lies between 0 to 1 . Higher score states the higher confidence score of the output.</td>
+</tr>
+<tr>
+<td>Not Popular</td>
+<td>The confidence score of the non-virality of the image. It lies between 0 to 1 . Higher score states the higher confidence score of the output.</td>
+</tr>
+</tbody></table>
 
 <table><thead>
 <tr>
@@ -493,30 +545,56 @@ echo popularity($path_to_image);
 <h1 id='facial-emotion'>Facial Emotion</h1><h2 id='strong-em-post-em-strong-3'><strong><em>POST</em></strong></h2>
 <p><strong>Summary:</strong> Facial Emotion</p>
 
-<p><strong>Description:</strong> Understand emotion of the person in your image .</p>
+<p><strong>Description:</strong> This API can be used to monitor emotions associated with visual content shared on social media or photo sharing apps or build interactive video chat applications.</p>
 <pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="c"># When sending a file.</span>
 
 <span class="n">facial_emotion</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span> <span class="s">"http://apis.paralleldots.com/v3/facial_emotion"</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span> <span class="s">"api_key"</span><span class="p">:</span> <span class="n">api_key</span> <span class="p">}</span> <span class="p">,</span><span class="n">files</span><span class="o">=</span><span class="p">{</span><span class="s">"file"</span><span class="p">:</span> <span class="nb">open</span><span class="p">(</span><span class="s">"&lt;path_to_image&gt;"</span><span class="p">,</span><span class="s">"rb"</span><span class="p">)})</span><span class="o">.</span><span class="n">text</span>
-</code></pre><pre class="highlight shell tab-shell"><code>
+
+<span class="c"># When sending a url</span>
+
+<span class="n">facial_emotion</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span> <span class="s">"http://apis.paralleldots.com/v3/facial_emotion"</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span> <span class="s">"api_key"</span><span class="p">:</span> <span class="n">api_key</span> <span class="p">,</span><span class="s">"url"</span><span class="p">:</span><span class="s">"https://www.google.com/image-400184.jpg"</span><span class="p">})</span><span class="o">.</span><span class="n">text</span>
+</code></pre><pre class="highlight shell tab-shell"><code>To send a file.
+
 curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: application/json'</span> <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"formData"</span><span class="o">}</span> -F <span class="s2">"file=@/home/my_computer/Downloads/image_1.jpg"</span> -F <span class="s2">"api_key=ABCdef123MNO456PQR789xyz"</span> <span class="s1">'https://apis.paralleldots.com/v3/facial_emotion'</span>
 
-</code></pre>
+To send a image url.
+
+curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: amData"} -F "url=https://www.google.com/image-400184.jpg" -F "api_key=BJUFXLHtpLDEPKd5WEts1PKbDaTDWJdTM2JxusAEkRQ" '</span>https://apis.paralleldots.com/v3/facial_emotion<span class="s1">'
+
+</span></code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"facial_emotion"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Angry"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.46334898471832275</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.46334898471832275</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Angry"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Neutral"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.23679578304290771</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.23679578304290771</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Neutral"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sad"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.09110680967569351</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.09110680967569351</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sad"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0540882833302021</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fear"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05155337601900101</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Surprise"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05155337601900101</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Happy"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05155337601900101</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Disgust"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
   </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"By accessing ParallelDots API or using information generated by ParallelDots API, you are agreeing to be bound by the ParallelDots API Terms of Use: http://www.paralleldots.com/terms-and-conditions"</span><span class="w">
@@ -525,6 +603,8 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span
 <p><code>***POST*** /facial_emotion</code> </p>
 
 <p><strong>Parameters</strong></p>
+
+<p>Either file or url is mandatory , do not send both parameters.</p>
 
 <table><thead>
 <tr>
@@ -536,10 +616,17 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span
 </tr>
 </thead><tbody>
 <tr>
+<td>url</td>
+<td>query</td>
+<td>Pass url of image file</td>
+<td>Yes if file not provided</td>
+<td>string</td>
+</tr>
+<tr>
 <td>file</td>
 <td>query</td>
 <td>Pass a image file</td>
-<td>Yes</td>
+<td>Yes if url not provided</td>
 <td>file</td>
 </tr>
 <tr>
@@ -552,6 +639,26 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span
 </tbody></table>
 
 <p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Name  Description</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>facial_emotion</td>
+<td>Contains all the tags and their corresponding score</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>Name of the emotion i.e (Angry,Disgust,Fear,Happy,Sad,Surprise,Neutral)</td>
+</tr>
+<tr>
+<td>score</td>
+<td>The confidence score of the emotion in the image. It lies between 0 to 1 . Higher score states the higher confidence score of the output.</td>
+</tr>
+</tbody></table>
 
 <table><thead>
 <tr>
@@ -575,14 +682,27 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span
 <h1 id='image-labels'>Image Labels</h1><h2 id='strong-em-post-em-strong-4'><strong><em>POST</em></strong></h2>
 <p><strong>Summary:</strong> Image Labels</p>
 
-<p><strong>Description:</strong> Understand lables present in your image .</p>
+<p><strong>Description:</strong> Image recognition API finds the label(s) (names) of objects in the image along with its probability score. Image Recognition is beneficial to build visual search capability in your application letting you create a compelling discovery engine for your items.</p>
 <pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">facial_emotion</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span> <span class="s">"http://apis.paralleldots.com/v3/object_recognizer"</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span> <span class="s">"api_key"</span><span class="p">:</span> <span class="n">api_key</span> <span class="p">}</span> <span class="p">,</span><span class="n">files</span><span class="o">=</span><span class="p">{</span><span class="s">"file"</span><span class="p">:</span> <span class="nb">open</span><span class="p">(</span><span class="s">"&lt;path_to_image&gt;"</span><span class="p">,</span><span class="s">"rb"</span><span class="p">)})</span><span class="o">.</span><span class="n">text</span>
+<span class="c">#when sending a image file</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span> <span class="s">"http://apis.paralleldots.com/v3/object_recognizer"</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span> <span class="s">"api_key"</span><span class="p">:</span> <span class="n">api_key</span> <span class="p">}</span> <span class="p">,</span><span class="n">files</span><span class="o">=</span><span class="p">{</span><span class="s">"file"</span><span class="p">:</span> <span class="nb">open</span><span class="p">(</span><span class="s">"&lt;path_to_image&gt;"</span><span class="p">,</span><span class="s">"rb"</span><span class="p">)})</span><span class="o">.</span><span class="n">text</span>
+
+<span class="c"># When sending a url</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span> <span class="s">"http://apis.paralleldots.com/v3/object_recognizer"</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span> <span class="s">"api_key"</span><span class="p">:</span> <span class="n">api_key</span> <span class="p">,</span><span class="s">"url"</span><span class="p">:</span><span class="s">"https://www.google.com/image-400184.jpg"</span><span class="p">})</span><span class="o">.</span><span class="n">text</span>
 </code></pre><pre class="highlight shell tab-shell"><code>
+To send a image file.
+
 curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: application/json'</span> <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"formData"</span><span class="o">}</span> -F <span class="s2">"file=@/home/my_computer/Downloads/image_1.jpg"</span> -F <span class="s2">"api_key=ABCdef123MNO456PQR789xyz"</span> <span class="s1">'https://apis.paralleldots.com/v3/object_recognizer'</span>
 
-</code></pre>
+To send a image url.
+
+curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: amData"} -F "url=https://www.google.com/image-400184.jpg" -F "api_key=BJUFXLHtpLDEPKd5WEts1PKbDaTDWJdTM2JxusAEkRQ" '</span>https://apis.paralleldots.com/v3/object_recognizer<span class="s1">'
+
+
+</span></code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
@@ -662,6 +782,26 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span
 </tbody></table>
 
 <p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Name  Description</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>output</td>
+<td>Contains all the tags and their corresponding score</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>Name of the emotion i.e (Angry,Disgust,Fear,Happy,Sad,Surprise,Neutral)</td>
+</tr>
+<tr>
+<td>score</td>
+<td>The confidence score of the emotion in the image. It lies between 0 to 1 . Higher score states the higher confidence score of the output.</td>
+</tr>
+</tbody></table>
 
 <table><thead>
 <tr>
