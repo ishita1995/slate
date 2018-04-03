@@ -398,17 +398,20 @@ echo nsfw($path_to_image);
 
 <table><thead>
 <tr>
-<th>Name  Description</th>
+<th>Name</th>
+<th>Description</th>
 <th>Type</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>output</td>
 <td>If the imgage safe to open at work or not</td>
+<td>string</td>
 </tr>
 <tr>
 <td>prob</td>
 <td>The score of above output. It lies between 0 to 1 . Higher score states the higher confidence score of the output.</td>
+<td>float</td>
 </tr>
 </tbody></table>
 
@@ -522,17 +525,20 @@ echo popularity($path_to_image);
 
 <table><thead>
 <tr>
-<th>Name  Description</th>
+<th>Name</th>
+<th>Description</th>
 <th>Type</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>Popular</td>
 <td>The confidence score of the virality of the image. It lies between 0 to 1 . Higher score states the higher confidence score of the output.</td>
+<td>string</td>
 </tr>
 <tr>
 <td>Not Popular</td>
 <td>The confidence score of the non-virality of the image. It lies between 0 to 1 . Higher score states the higher confidence score of the output.</td>
+<td>float</td>
 </tr>
 </tbody></table>
 
@@ -655,21 +661,25 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span
 
 <table><thead>
 <tr>
-<th>Name  Description</th>
+<th>Name</th>
+<th>Description</th>
 <th>Type</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>facial_emotion</td>
 <td>Contains all the tags and their corresponding score</td>
+<td>array</td>
 </tr>
 <tr>
 <td>tag</td>
 <td>Name of the emotion i.e (Angry,Disgust,Fear,Happy,Sad,Surprise,Neutral)</td>
+<td>string</td>
 </tr>
 <tr>
 <td>score</td>
 <td>The confidence score of the emotion in the image. It lies between 0 to 1 . Higher score states the higher confidence score of the output.</td>
+<td>float</td>
 </tr>
 </tbody></table>
 
@@ -798,21 +808,25 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span
 
 <table><thead>
 <tr>
-<th>Name  Description</th>
+<th>Name</th>
+<th>Description</th>
 <th>Type</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>output</td>
 <td>Contains all the tags and their corresponding score</td>
+<td>array</td>
 </tr>
 <tr>
 <td>tag</td>
 <td>Name of the emotion i.e (Angry,Disgust,Fear,Happy,Sad,Surprise,Neutral)</td>
+<td>string</td>
 </tr>
 <tr>
 <td>score</td>
 <td>The confidence score of the emotion in the image. It lies between 0 to 1 . Higher score states the higher confidence score of the output.</td>
+<td>float</td>
 </tr>
 </tbody></table>
 
