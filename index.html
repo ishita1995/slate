@@ -245,6 +245,22 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#facial-emotion" class="toc-h1 toc-link" data-title="Facial Emotion">Facial Emotion</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#strong-em-post-em-strong-3" class="toc-h2 toc-link" data-title="<strong><em>POST</em></strong>"><strong><em>POST</em></strong></a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#image-labels" class="toc-h1 toc-link" data-title="Image Labels">Image Labels</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#strong-em-post-em-strong-4" class="toc-h2 toc-link" data-title="<strong><em>POST</em></strong>"><strong><em>POST</em></strong></a>
+                  </li>
+              </ul>
+          </li>
       </div>
         <ul class="toc-footer">
             <li><a href='https://www.paralleldots.com/sign-up'>Sign Up for a Developer Key</a></li>
@@ -425,6 +441,198 @@ echo popularity($path_to_image);
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
 <p><code>***POST*** /popularity</code> </p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>file</td>
+<td>query</td>
+<td>Pass a image file</td>
+<td>Yes</td>
+<td>file</td>
+</tr>
+<tr>
+<td>api_key</td>
+<td>query</td>
+<td>Apikey</td>
+<td>Yes</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Successful response</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Not Modified</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+</tr>
+</tbody></table>
+<h1 id='facial-emotion'>Facial Emotion</h1><h2 id='strong-em-post-em-strong-3'><strong><em>POST</em></strong></h2>
+<p><strong>Summary:</strong> Facial Emotion</p>
+
+<p><strong>Description:</strong> Understand emotion of the person in your image .</p>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">facial_emotion</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span> <span class="s">"http://apis.paralleldots.com/v3/facial_emotion"</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span> <span class="s">"api_key"</span><span class="p">:</span> <span class="n">api_key</span> <span class="p">}</span> <span class="p">,</span><span class="n">files</span><span class="o">=</span><span class="p">{</span><span class="s">"file"</span><span class="p">:</span> <span class="nb">open</span><span class="p">(</span><span class="s">"&lt;path_to_image&gt;"</span><span class="p">,</span><span class="s">"rb"</span><span class="p">)})</span><span class="o">.</span><span class="n">text</span>
+</code></pre><pre class="highlight shell tab-shell"><code>
+curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: application/json'</span> <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"formData"</span><span class="o">}</span> -F <span class="s2">"file=@/home/my_computer/Downloads/image_1.jpg"</span> -F <span class="s2">"api_key=ABCdef123MNO456PQR789xyz"</span> <span class="s1">'https://apis.paralleldots.com/v3/facial_emotion'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"facial_emotion"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Angry"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.46334898471832275</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Neutral"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.23679578304290771</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sad"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.09110680967569351</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"By accessing ParallelDots API or using information generated by ParallelDots API, you are agreeing to be bound by the ParallelDots API Terms of Use: http://www.paralleldots.com/terms-and-conditions"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
+<p><code>***POST*** /facial_emotion</code> </p>
+
+<p><strong>Parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Located in</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>file</td>
+<td>query</td>
+<td>Pass a image file</td>
+<td>Yes</td>
+<td>file</td>
+</tr>
+<tr>
+<td>api_key</td>
+<td>query</td>
+<td>Apikey</td>
+<td>Yes</td>
+<td>string</td>
+</tr>
+</tbody></table>
+
+<p><strong>Responses</strong></p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>Successful response</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Not Modified</td>
+</tr>
+<tr>
+<td>500</td>
+<td>Internal Server Error</td>
+</tr>
+</tbody></table>
+<h1 id='image-labels'>Image Labels</h1><h2 id='strong-em-post-em-strong-4'><strong><em>POST</em></strong></h2>
+<p><strong>Summary:</strong> Image Labels</p>
+
+<p><strong>Description:</strong> Understand lables present in your image .</p>
+<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">facial_emotion</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span> <span class="s">"http://apis.paralleldots.com/v3/object_recognizer"</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span> <span class="s">"api_key"</span><span class="p">:</span> <span class="n">api_key</span> <span class="p">}</span> <span class="p">,</span><span class="n">files</span><span class="o">=</span><span class="p">{</span><span class="s">"file"</span><span class="p">:</span> <span class="nb">open</span><span class="p">(</span><span class="s">"&lt;path_to_image&gt;"</span><span class="p">,</span><span class="s">"rb"</span><span class="p">)})</span><span class="o">.</span><span class="n">text</span>
+</code></pre><pre class="highlight shell tab-shell"><code>
+curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: application/json'</span> <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"formData"</span><span class="o">}</span> -F <span class="s2">"file=@/home/my_computer/Downloads/image_1.jpg"</span> -F <span class="s2">"api_key=ABCdef123MNO456PQR789xyz"</span> <span class="s1">'https://apis.paralleldots.com/v3/object_recognizer'</span>
+
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+ </span><span class="s2">"output"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fashion"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.36841973662376404</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clothing"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2704277038574219</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Photo shoot"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.21180585026741028</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dress"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.19927018880844116</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Photograph"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.19799776375293732</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Person"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.18744145333766937</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Model"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.16371771693229675</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beauty"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.16217313706874847</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Woman"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.15185585618019104</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Art"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.11858072131872177</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"By accessing ParallelDots API or using information generated by ParallelDots API, you are agreeing to be bound by the ParallelDots API Terms of Use: http://www.paralleldots.com/terms-and-conditions"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-4'>HTTP Request</h3>
+<p><code>***POST*** /object_recognizer</code> </p>
 
 <p><strong>Parameters</strong></p>
 
