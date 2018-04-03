@@ -323,9 +323,14 @@ You must replace <code>ABCdef123MNO456PQR789xyz</code> with your personal API ke
 <span class="n">path</span> <span class="o">=</span> <span class="s">"/home/my_computer/Downloads/image_1.jpg"</span>
 <span class="k">print</span><span class="p">(</span> <span class="n">paralleldots</span><span class="o">.</span><span class="n">nsfw</span><span class="p">(</span> <span class="n">path</span> <span class="p">)</span> <span class="p">)</span>
 </code></pre><pre class="highlight shell tab-shell"><code>
+To send a image file.
+
 curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: application/json'</span> <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"formData"</span><span class="o">}</span> -F <span class="s2">"file=@/home/my_computer/Downloads/image_1.jpg"</span> -F <span class="s2">"api_key=ABCdef123MNO456PQR789xyz"</span> <span class="s1">'https://apis.paralleldots.com/v3/nsfw'</span>
 
-</code></pre><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">paralleldots.ParallelDots</span><span class="o">;</span>
+To send a image url.
+
+curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: amData"} -F "url=https://www.google.com/image-400184.jpg" -F "api_key=ABCdef123MNO456PQR789xyz" '</span>https://apis.paralleldots.com/v3/popularity<span class="s1">'
+</span></code></pre><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">paralleldots.ParallelDots</span><span class="o">;</span>
 
 <span class="n">ParallelDots</span> <span class="n">pd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ParallelDots</span><span class="o">();</span>
 <span class="n">String</span> <span class="n">path_to_image</span><span class="o">=</span><span class="s">"&lt;path_to_image&gt;"</span>
@@ -440,8 +445,16 @@ echo nsfw($path_to_image);
 <span class="n">path</span> <span class="o">=</span> <span class="s">"/home/my_computer/Downloads/image_1.jpg"</span>
 <span class="k">print</span><span class="p">(</span> <span class="s">"Popularity"</span> <span class="p">)</span>
 <span class="k">print</span><span class="p">(</span> <span class="n">paralleldots</span><span class="o">.</span><span class="n">popularity</span><span class="p">(</span> <span class="n">path</span> <span class="p">)</span> <span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: application/json'</span> <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"formData"</span><span class="o">}</span> -F <span class="s2">"file=@/home/my_computer/Downloads/image_1.jpg"</span> -F <span class="s2">"api_key=ABCdef123MNO456PQR789xyz"</span> <span class="s1">'https://apis.paralleldots.com/v3/popularity'</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">paralleldots.ParallelDots</span><span class="o">;</span>
+</code></pre><pre class="highlight shell tab-shell"><code>
+To send a image file 
+
+curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: application/json'</span> <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"formData"</span><span class="o">}</span> -F <span class="s2">"file=@/home/my_computer/Downloads/image_1.jpg"</span> -F <span class="s2">"api_key=ABCdef123MNO456PQR789xyz"</span> <span class="s1">'https://apis.paralleldots.com/v3/popularity'</span>
+
+To send a image url.
+
+curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: amData"} -F "url=https://www.google.com/image-400184.jpg" -F "api_key=ABCdef123MNO456PQR789xyz" '</span>https://apis.paralleldots.com/v3/popularity<span class="s1">'
+
+</span></code></pre><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">paralleldots.ParallelDots</span><span class="o">;</span>
 
 <span class="n">ParallelDots</span> <span class="n">pd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ParallelDots</span><span class="o">();</span>
 <span class="n">String</span> <span class="n">path_to_image</span><span class="o">=</span><span class="s">"&lt;path_to_image&gt;"</span><span class="o">;</span>
@@ -560,7 +573,7 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span
 
 To send a image url.
 
-curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: amData"} -F "url=https://www.google.com/image-400184.jpg" -F "api_key=BJUFXLHtpLDEPKd5WEts1PKbDaTDWJdTM2JxusAEkRQ" '</span>https://apis.paralleldots.com/v3/facial_emotion<span class="s1">'
+curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: amData"} -F "url=https://www.google.com/image-400184.jpg" -F "api_key=ABCdef123MNO456PQR789xyz" '</span>https://apis.paralleldots.com/v3/facial_emotion<span class="s1">'
 
 </span></code></pre>
 <blockquote>
@@ -699,7 +712,7 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span
 
 To send a image url.
 
-curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: amData"} -F "url=https://www.google.com/image-400184.jpg" -F "api_key=BJUFXLHtpLDEPKd5WEts1PKbDaTDWJdTM2JxusAEkRQ" '</span>https://apis.paralleldots.com/v3/object_recognizer<span class="s1">'
+curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: amData"} -F "url=https://www.google.com/image-400184.jpg" -F "api_key=ABCdef123MNO456PQR789xyz" '</span>https://apis.paralleldots.com/v3/object_recognizer<span class="s1">'
 
 
 </span></code></pre>
