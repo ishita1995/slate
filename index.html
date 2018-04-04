@@ -375,14 +375,14 @@ echo nsfw($path_to_image);
 <td>file</td>
 <td>query</td>
 <td>Pass a image file</td>
-<td>Yes</td>
+<td>Yes if url not provided</td>
 <td>file</td>
 </tr>
 <tr>
 <td>url</td>
 <td>query</td>
 <td>Pass url of image file</td>
-<td>Yes</td>
+<td>Yes if file not provided</td>
 <td>string</td>
 </tr>
 <tr>
@@ -789,10 +789,17 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span
 </tr>
 </thead><tbody>
 <tr>
+<td>url</td>
+<td>query</td>
+<td>Pass url of image file</td>
+<td>Yes if file not provided</td>
+<td>string</td>
+</tr>
+<tr>
 <td>file</td>
 <td>query</td>
 <td>Pass a image file</td>
-<td>Yes</td>
+<td>Yes if url not provided</td>
 <td>file</td>
 </tr>
 <tr>
