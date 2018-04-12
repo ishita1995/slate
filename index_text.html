@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Documentation</title>
+    <title>ParallelDots Visual API</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -198,10 +198,10 @@
     </style>
     <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all_nosearch.js"></script>
+      <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[]">
+  <body class="index_text" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;java&quot;,&quot;php&quot;,&quot;csharp&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -210,6 +210,18 @@
     </a>
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="ruby">ruby</a>
+              <a href="#" data-language-name="python">python</a>
+              <a href="#" data-language-name="java">java</a>
+              <a href="#" data-language-name="php">php</a>
+              <a href="#" data-language-name="csharp">csharp</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
       <div id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
@@ -322,34 +334,15 @@
               </ul>
           </li>
       </div>
+        <ul class="toc-footer">
+            <li><a href='https://www.paralleldots.com/sign-up'>Sign Up for a Developer Key</a></li>
+            <li><a href='https://github.com/lavkumarv'>Documentation Powered by lav</a></li>
+        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <p>import pdb
-  pdb.set_trace()--- </p>
-
-<p>title: ParallelDots Visual API </p>
-
-<p>language_tabs: 
-   - shell 
-   - ruby
-   - python
-   - java
-   - php
-   - csharp</p>
-
-<p>toc_footers: 
-   - <a href='https://www.paralleldots.com/sign-up'>Sign Up for a Developer Key</a> 
-   - <a href='https://github.com/lavkumarv'>Documentation Powered by lav</a> </p>
-
-<p>includes: 
-   - errors </p>
-
-<p>search: true </p>
-
-<hr>
-<h1 id='introduction'>Introduction</h1>
+        <h1 id='introduction'>Introduction</h1>
 <p>AI Powered Text Analysis Apis  </p>
 
 <p><strong>Version:</strong> 2.0.0 </p>
@@ -1891,24 +1884,34 @@ echo multilang_keywords("La ville de Paris est très belle", "fr");
 <h1 id='language-detection'>/LANGUAGE DETECTION</h1><h2 id='strong-em-post-em-strong-13'><strong><em>POST</em></strong></h2>
 <p><strong>Summary:</strong> Language Detection</p>
 
-<p><strong>Description:</strong> Language Detection API accepts input text and API key to return a JSON response classifying the input text to the language detected. The API can detect upto 64 languages.</p>
-<pre class="highlight ruby tab-ruby"><code>
-</code></pre><pre class="highlight python tab-python"><code>
+<p><strong>Description:</strong> Language Detection API accepts input text and API key to return a JSON response classifying the input text to the language detected. The API can detect upto 94 languages.</p>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'paralleldots'</span>
 
-</code></pre><pre class="highlight shell tab-shell"><code>
-</code></pre><pre class="highlight java tab-java"><code>
+<span class="nb">puts</span><span class="p">(</span> <span class="n">multilang_keywords</span><span class="p">(</span> <span class="s2">"C'est un environnement très hostile, si vous choisissez de débattre ici, vous serez vicieusement attaqué par l'opposition."</span><span class="p">,</span> <span class="s2">"fr"</span> <span class="p">)</span> <span class="p">)</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">paralleldots</span>
+<span class="n">paralleldots</span><span class="o">.</span><span class="n">multilang_keywords</span><span class="p">(</span> <span class="s">"C'est un environnement très hostile, si vous choisissez de débattre ici, vous serez vicieusement attaqué par l'opposition."</span><span class="p">,</span> <span class="s">"fr"</span><span class="p">)</span>
 
-</code></pre><pre class="highlight php tab-php"><code>
+</code></pre><pre class="highlight shell tab-shell"><code>curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: application/json'</span> <span class="o">{</span><span class="s2">"type"</span>:<span class="s2">"formData"</span><span class="o">}</span> <span class="s1">'https://apis.paralleldots.com/v2/text_parser?text=C'</span>est un environnement très hostile, si vous choisissez de débattre ici, vous serez vicieusement attaqué par l<span class="s1">'opposition.&amp;lang_code=fr&amp;api_key=ABCdef123MNO456PQR789xyz'</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">paralleldots.ParallelDots</span><span class="o">;</span>
+<span class="n">ParallelDots</span> <span class="n">pd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ParallelDots</span><span class="o">();</span>
+<span class="n">String</span> <span class="n">multilang_keywords</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="na">multilang_keywords</span><span class="o">(</span><span class="s">"La ville de Paris est très belle"</span><span class="o">,</span> <span class="s">"fr"</span><span class="o">)</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">multilang_keywords</span><span class="o">);</span>
 
-</code></pre><pre class="highlight csharp tab-csharp"><code>
+</code></pre><pre class="highlight php tab-php"><code>require(__DIR__ . '/vendor/paralleldots/apis/autoload.php');
+echo multilang_keywords("La ville de Paris est très belle", "fr");
+
+</code></pre><pre class="highlight csharp tab-csharp"><code><span class="k">using</span> <span class="nn">ParallelDots</span>
+
+<span class="n">ParallelDots</span><span class="p">.</span><span class="n">api</span> <span class="n">pd</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ParallelDots</span><span class="p">.</span><span class="nf">api</span><span class="p">(</span><span class="s">"&lt;YOUR_API_KEY&gt;"</span><span class="p">);</span>
+<span class="n">String</span> <span class="n">multilang_keywords</span> <span class="p">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">multilang_keywords</span><span class="p">(</span><span class="s">"La ville de Paris est très belle"</span><span class="p">,</span> <span class="s">"fr"</span><span class="p">);</span>
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">multilang_keywords</span><span class="p">);</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"By accessing ParallelDots API or using information generated by ParallelDots API, you are agreeing to be bound by the ParallelDots API Terms of Use: http://www.paralleldots.com/terms-and-conditions"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"output"</span><span class="p">:</span><span class="w"> </span><span class="s2">"English"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"prob"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9692128896713257</span><span class="w">
+  </span><span class="s2">"keywords"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"choisissez"</span><span class="p">,</span><span class="w"> </span><span class="s2">"ici"</span><span class="p">,</span><span class="w"> </span><span class="s2">"débattre"</span><span class="p">,</span><span class="w"> </span><span class="s2">"hostile"</span><span class="p">,</span><span class="w"> </span><span class="s2">"lopposition"</span><span class="p">,</span><span class="w"> </span><span class="s2">"environnement"</span><span class="p">,</span><span class="w"> </span><span class="s2">"si"</span><span class="p">,</span><span class="w"> </span><span class="s2">"vicieusement"</span><span class="p">,</span><span class="w"> </span><span class="s2">"attaqué"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"usage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"By accessing ParallelDots API or using information generated by ParallelDots API, you are agreeing to be bound by the ParallelDots API Terms of Use: http://www.paralleldots.com/terms-and-conditions"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='http-request-13'>HTTP Request</h3>
@@ -1981,6 +1984,14 @@ echo multilang_keywords("La ville de Paris est très belle", "fr");
 
       </div>
       <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="ruby">ruby</a>
+                <a href="#" data-language-name="python">python</a>
+                <a href="#" data-language-name="java">java</a>
+                <a href="#" data-language-name="php">php</a>
+                <a href="#" data-language-name="csharp">csharp</a>
+          </div>
       </div>
     </div>
   </body>
