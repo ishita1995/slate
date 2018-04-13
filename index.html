@@ -316,12 +316,16 @@ You must replace <code>ABCdef123MNO456PQR789xyz</code> with your personal API ke
 <p><strong>Description:</strong> Inappropriate content classifier is a powerful tool to filter out pornographic images from social media feeds, forums, photo sharing apps, etc. ParallelDots inappropriate content classifier can filter such content and help build a safer platform for your community.</p>
 <pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'paralleldots'</span>
 <span class="n">path</span> <span class="o">=</span> <span class="s2">"/home/my_computer/Downloads/image_1.jpg"</span>
-
 <span class="nb">puts</span><span class="p">(</span> <span class="n">nsfw</span><span class="p">(</span> <span class="n">path</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">url</span>       <span class="o">=</span> <span class="s2">"http://i.imgur.com/klb812s.jpg"</span>
+<span class="nb">puts</span><span class="p">(</span> <span class="n">nsfw_url</span><span class="p">(</span> <span class="n">url</span> <span class="p">)</span> <span class="p">)</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">paralleldots</span>
 
 <span class="n">path</span> <span class="o">=</span> <span class="s">"/home/my_computer/Downloads/image_1.jpg"</span>
 <span class="k">print</span><span class="p">(</span> <span class="n">paralleldots</span><span class="o">.</span><span class="n">nsfw</span><span class="p">(</span> <span class="n">path</span> <span class="p">)</span> <span class="p">)</span>
+
+<span class="n">url</span>       <span class="o">=</span> <span class="s">"http://i.imgur.com/klb812s.jpg"</span>
+<span class="k">print</span><span class="p">(</span> <span class="n">nsfw_url</span><span class="p">(</span> <span class="n">url</span> <span class="p">)</span> <span class="p">)</span>
 </code></pre><pre class="highlight shell tab-shell"><code>
 To send a image file.
 
@@ -329,7 +333,7 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span
 
 To send a image url.
 
-curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: amData"} -F "url=https://www.google.com/image-400184.jpg" -F "api_key=ABCdef123MNO456PQR789xyz" '</span>https://apis.paralleldots.com/v3/popularity<span class="s1">'
+curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span> --header <span class="s1">'Accept: amData"} -F "url=https://www.google.com/image-400184.jpg" -F "api_key=ABCdef123MNO456PQR789xyz" '</span>https://apis.paralleldots.com/v3/nsfw<span class="s1">'
 </span></code></pre><pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">paralleldots.ParallelDots</span><span class="o">;</span>
 
 <span class="n">ParallelDots</span> <span class="n">pd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ParallelDots</span><span class="o">();</span>
@@ -342,6 +346,8 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span
 </code></pre><pre class="highlight php tab-php"><code>require(__DIR__ . '/vendor/paralleldots/apis/autoload.php');
 $path_to_image = "<span class="nt">&lt;path</span><span class="na">_to_image</span><span class="nt">&gt;</span>";
 echo nsfw($path_to_image);
+$url_to_image = "<span class="nt">&lt;url</span><span class="na">_to_image</span><span class="nt">&gt;</span>";
+echo nsfw_url($url_to_image);
 
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="n">path</span> <span class="p">=</span> <span class="s">"/home/my_computer/Downloads/image_1.jpg"</span>
 <span class="n">String</span> <span class="n">nsfw</span> <span class="p">=</span> <span class="n">pd</span><span class="p">.</span><span class="nf">nsfw</span><span class="p">(</span><span class="n">path_to_image</span><span class="p">);</span>
@@ -422,20 +428,49 @@ echo nsfw($path_to_image);
 <table><thead>
 <tr>
 <th>Code</th>
+<th>Text</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>200</td>
+<td>OK</td>
 <td>Successful response</td>
 </tr>
 <tr>
 <td>304</td>
 <td>Not Modified</td>
+<td>There was no new data to return.</td>
 </tr>
 <tr>
 <td>500</td>
 <td>Internal Server Error</td>
+<td>Backend Error. We will investigate the issue and ensure it will be fixed as a priority</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>Please provide valid input parameter.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td>Invalid Credentials. Please provide valid API key</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>Daily/Monthy Limit Exceeded. Please upgrade your account from your user dashboard at <a href="https://user.apis.paralleldots.com/user_dashboard">https://user.apis.paralleldots.com/user_dashboard</a></td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests</td>
+<td>Too Many Requests. Please try after sometime. If user makes more than 60 API calls per minute</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable</td>
+<td>Invalid Format. Parameter url should be string</td>
 </tr>
 </tbody></table>
 <h1 id='virality-detection'>Virality Detection</h1><h2 id='strong-em-post-em-strong-2'><strong><em>POST</em></strong></h2>
@@ -443,15 +478,18 @@ echo nsfw($path_to_image);
 
 <p><strong>Description:</strong> Virality Detection API gives a score to images based on their potential to go viral on the Internet. The AI model is trained using a super deep neural network on a massive corpus of images and their likes count as crawled from the open web. The score that you get as an output is the virality score of the input photo out of a maximum score of 100. </p>
 <pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'paralleldots'</span>
-
 <span class="n">path</span> <span class="o">=</span> <span class="s2">"/home/my_computer/Downloads/image_1.jpg"</span>
-
 <span class="nb">puts</span><span class="p">(</span> <span class="n">popularity</span><span class="p">(</span> <span class="n">path</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">url</span>       <span class="o">=</span> <span class="s2">"http://i.imgur.com/klb812s.jpg"</span>
+<span class="nb">puts</span><span class="p">(</span> <span class="n">popularity_url</span><span class="p">(</span> <span class="n">url</span> <span class="p">)</span> <span class="p">)</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">paralleldots</span>
 
 <span class="n">path</span> <span class="o">=</span> <span class="s">"/home/my_computer/Downloads/image_1.jpg"</span>
 <span class="k">print</span><span class="p">(</span> <span class="s">"Popularity"</span> <span class="p">)</span>
 <span class="k">print</span><span class="p">(</span> <span class="n">paralleldots</span><span class="o">.</span><span class="n">popularity</span><span class="p">(</span> <span class="n">path</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">url</span>       <span class="o">=</span> <span class="s">"http://i.imgur.com/klb812s.jpg"</span>
+<span class="k">print</span><span class="p">(</span> <span class="n">popularity_url</span><span class="p">(</span> <span class="n">url</span> <span class="p">)</span> <span class="p">)</span>
+
 </code></pre><pre class="highlight shell tab-shell"><code>
 To send a image file 
 
@@ -473,6 +511,8 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span
 </code></pre><pre class="highlight php tab-php"><code>require(__DIR__ . '/vendor/paralleldots/apis/autoload.php');
 $path_to_image = "<span class="nt">&lt;path</span><span class="na">_to_image</span><span class="nt">&gt;</span>";
 echo popularity($path_to_image);
+$url_to_image = "<span class="nt">&lt;url</span><span class="na">_to_image</span><span class="nt">&gt;</span>";
+echo popularity_url($url_to_image);
 
 </code></pre><pre class="highlight csharp tab-csharp"><code><span class="n">String</span> <span class="n">path_to_image</span> <span class="p">=</span> <span class="s">@"&lt;path_to_image&gt;"</span><span class="p">;</span>
 <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"popularity"</span><span class="p">);</span>
@@ -553,27 +593,72 @@ echo popularity($path_to_image);
 <table><thead>
 <tr>
 <th>Code</th>
+<th>Text</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>200</td>
+<td>OK</td>
 <td>Successful response</td>
 </tr>
 <tr>
 <td>304</td>
 <td>Not Modified</td>
+<td>There was no new data to return.</td>
 </tr>
 <tr>
 <td>500</td>
 <td>Internal Server Error</td>
+<td>Backend Error. We will investigate the issue and ensure it will be fixed as a priority</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>Please provide valid input parameter.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td>Invalid Credentials. Please provide valid API key</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>Daily/Monthy Limit Exceeded. Please upgrade your account from your user dashboard at <a href="https://user.apis.paralleldots.com/user_dashboard">https://user.apis.paralleldots.com/user_dashboard</a></td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests</td>
+<td>Too Many Requests. Please try after sometime. If user makes more than 60 API calls per minute</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable</td>
+<td>Invalid Format. Parameter url should be string</td>
 </tr>
 </tbody></table>
 <h1 id='facial-emotion'>Facial Emotion</h1><h2 id='strong-em-post-em-strong-3'><strong><em>POST</em></strong></h2>
 <p><strong>Summary:</strong> Facial Emotion</p>
 
 <p><strong>Description:</strong> This API can be used to monitor emotions associated with visual content shared on social media or photo sharing apps or build interactive video chat applications.</p>
-<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'paralleldots'</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s2">"/home/my_computer/Downloads/image_1.jpg"</span>
+<span class="nb">puts</span><span class="p">(</span> <span class="n">facial_emotion</span><span class="p">(</span> <span class="n">path</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">url</span>       <span class="o">=</span> <span class="s2">"http://i.imgur.com/klb812s.jpg"</span>
+<span class="nb">puts</span><span class="p">(</span> <span class="n">facial_emotion_url</span><span class="p">(</span> <span class="n">url</span> <span class="p">)</span> <span class="p">)</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">paralleldots</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="s">"/home/my_computer/Downloads/image_1.jpg"</span>
+<span class="k">print</span><span class="p">(</span> <span class="n">paralleldots</span><span class="o">.</span><span class="n">facial_emotion</span><span class="p">(</span> <span class="n">path</span> <span class="p">)</span> <span class="p">)</span>
+
+<span class="n">url</span>       <span class="o">=</span> <span class="s">"http://i.imgur.com/klb812s.jpg"</span>
+<span class="k">print</span><span class="p">(</span> <span class="n">facial_emotion_url</span><span class="p">(</span> <span class="n">url</span> <span class="p">)</span> <span class="p">)</span>
+
+
+<span class="c">#or </span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
 <span class="c"># When sending a file.</span>
 
 <span class="n">facial_emotion</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span> <span class="s">"https://apis.paralleldots.com/v3/facial_emotion"</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span> <span class="s">"api_key"</span><span class="p">:</span> <span class="n">api_key</span> <span class="p">}</span> <span class="p">,</span><span class="n">files</span><span class="o">=</span><span class="p">{</span><span class="s">"file"</span><span class="p">:</span> <span class="nb">open</span><span class="p">(</span><span class="s">"&lt;path_to_image&gt;"</span><span class="p">,</span><span class="s">"rb"</span><span class="p">)})</span><span class="o">.</span><span class="n">text</span>
@@ -694,27 +779,72 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span
 <table><thead>
 <tr>
 <th>Code</th>
+<th>Text</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>200</td>
+<td>OK</td>
 <td>Successful response</td>
 </tr>
 <tr>
 <td>304</td>
 <td>Not Modified</td>
+<td>There was no new data to return.</td>
 </tr>
 <tr>
 <td>500</td>
 <td>Internal Server Error</td>
+<td>Backend Error. We will investigate the issue and ensure it will be fixed as a priority</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>Please provide valid input parameter.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td>Invalid Credentials. Please provide valid API key</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>Daily/Monthy Limit Exceeded. Please upgrade your account from your user dashboard at <a href="https://user.apis.paralleldots.com/user_dashboard">https://user.apis.paralleldots.com/user_dashboard</a></td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests</td>
+<td>Too Many Requests. Please try after sometime. If user makes more than 60 API calls per minute</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable</td>
+<td>Invalid Format. Parameter url should be string</td>
 </tr>
 </tbody></table>
 <h1 id='image-labels'>Image Labels</h1><h2 id='strong-em-post-em-strong-4'><strong><em>POST</em></strong></h2>
 <p><strong>Summary:</strong> Image Labels</p>
 
 <p><strong>Description:</strong> Image recognition API finds the label(s) (names) of objects in the image along with its probability score. Image Recognition is beneficial to build visual search capability in your application letting you create a compelling discovery engine for your items.</p>
-<pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'paralleldots'</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s2">"/home/my_computer/Downloads/image_1.jpg"</span>
+<span class="nb">puts</span><span class="p">(</span> <span class="n">object_recognizer</span><span class="p">(</span> <span class="n">path</span> <span class="p">)</span> <span class="p">)</span>
+<span class="n">url</span>       <span class="o">=</span> <span class="s2">"http://i.imgur.com/klb812s.jpg"</span>
+<span class="nb">puts</span><span class="p">(</span> <span class="n">object_recognizer_url</span><span class="p">(</span> <span class="n">url</span> <span class="p">)</span> <span class="p">)</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">paralleldots</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="s">"/home/my_computer/Downloads/image_1.jpg"</span>
+
+<span class="k">print</span><span class="p">(</span> <span class="n">paralleldots</span><span class="o">.</span><span class="n">object_recognizer</span><span class="p">(</span> <span class="n">path</span> <span class="p">)</span> <span class="p">)</span>
+
+<span class="n">url</span>       <span class="o">=</span> <span class="s">"http://i.imgur.com/klb812s.jpg"</span>
+<span class="k">print</span><span class="p">(</span> <span class="n">paralleldots</span><span class="o">.</span><span class="n">object_recognizer_url</span><span class="p">(</span> <span class="n">url</span> <span class="p">))</span>
+
+<span class="c">#or </span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="c">#when sending a image file</span>
 
@@ -848,20 +978,49 @@ curl -X POST --header <span class="s1">'Content-Type: multipart/form-data'</span
 <table><thead>
 <tr>
 <th>Code</th>
+<th>Text</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>200</td>
+<td>OK</td>
 <td>Successful response</td>
 </tr>
 <tr>
 <td>304</td>
 <td>Not Modified</td>
+<td>There was no new data to return.</td>
 </tr>
 <tr>
 <td>500</td>
 <td>Internal Server Error</td>
+<td>Backend Error. We will investigate the issue and ensure it will be fixed as a priority</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>Please provide valid input parameter.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td>Invalid Credentials. Please provide valid API key</td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden</td>
+<td>Daily/Monthy Limit Exceeded. Please upgrade your account from your user dashboard at <a href="https://user.apis.paralleldots.com/user_dashboard">https://user.apis.paralleldots.com/user_dashboard</a></td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Requests</td>
+<td>Too Many Requests. Please try after sometime. If user makes more than 60 API calls per minute</td>
+</tr>
+<tr>
+<td>406</td>
+<td>Not Acceptable</td>
+<td>Invalid Format. Parameter url should be string</td>
 </tr>
 </tbody></table>
 
